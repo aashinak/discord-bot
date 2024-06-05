@@ -26,12 +26,13 @@ client.on("messageCreate",  (message) => {
 
     if (message.content.startsWith("create")) { 
         generateShortUrl(message)     
-    } else {
+    }
+    if (message.content.startsWith("hey")) {
         message.reply({
-            content: "Hi from bot 🤖"
+            content: `Hi @${message.author.globalName} hopes you are fine`
         })
     }
-   
+    
 })
 
 client.on("interactionCreate", (interaction) => {
