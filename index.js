@@ -4,6 +4,7 @@ import mongoDbConnect from './connection.js';
 import { generateShortUrl } from './controllers/url.js';
 import express from 'express'
 import urlRoute from './routes/url.js';
+import run from './geminiAi/geminiAi.js';
 
 
 const app = express()
@@ -11,6 +12,7 @@ const app = express()
 
 
 mongoDbConnect(process.env.MONGODB_URL)
+
 app.use('/', urlRoute)
 
 // Create a new client instance
@@ -31,6 +33,9 @@ client.on("messageCreate",  (message) => {
         message.reply({
             content: `Hi @${message.author.globalName} hopes you are fine`
         })
+    }
+    if (message.content.startsWith("!gemini")) {
+        run(message)
     }
     
 })
