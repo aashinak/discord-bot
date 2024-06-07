@@ -46,7 +46,6 @@ client.on("interactionCreate", (interaction) => {
 
 client.login(process.env.TOKEN)
 
-const port = 3000
-app.listen(3000, () => {
-    console.log(`Server started at http://localhost:${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server started`);
 })
